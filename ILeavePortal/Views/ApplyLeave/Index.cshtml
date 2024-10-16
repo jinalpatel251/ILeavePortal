@@ -1,0 +1,182 @@
+﻿<head>
+    <meta charset="utf-8">
+    <title>ILeavePortal</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&family=Roboto&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+
+
+<div class="" id="divapplyleaveindex" style="margin-top:100px">
+    <div class="" style="background-color:white">
+@*         <h2>Contect Record</h2> *@
+<button type="button" style="width:180px" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="fnAddNewMaster();">
+            Apply Leave
+        </button><br /><br />
+        <table id="tblapplyleave" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>LeaveType</th>
+                    <th>StartDate</th>
+                    <th>EndDate</th>
+                    <th>Reason</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody class="tbody">
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<div id="divApplyLeave" class="" style="margin-top: 150px">
+    <form  method="post" action="" novalidate="novalidate">
+        <div class="card-body">
+            <div class="row">
+                <input for="Id" type="hidden" class="form-control" id="Id" />
+                <div class="col-md-6">
+                    <div class="form-group pmd-textfield pmd-textfield-floating-label ">
+                        <label for="leave-type">Leave Type</label>
+                        <select name="leave-type" id="LeaveType" name="LeaveType" class="form-control" title="Please select a Leave Type" required="">
+                            <option></option>
+                            <option>Sick Leave</option>
+                            <option>Casual Leave</option>
+                            <option>EBL</option>
+                            <option>Unpaid Leave</option>
+                            <option>Hourly Leave</option>
+                        </select><span class="pmd-textfield-focused"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                        <label class="control-label" for="datepickerstart">Start Date</label>
+                        <input type="date" class="form-control" id="StartDate" name="StartDate" name="datepickerstart"><span class="pmd-textfield-focused"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                        <label class="control-label" for="datepickerend">End Date</label>
+                        <input type="date" class="form-control" id="EndDate" name="EndDate" name="datepickerend"><span class="pmd-textfield-focused"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                        <label>Reason</label>
+                        <textarea class="form-control" id="Reason" name="Reason"></textarea><span class="pmd-textfield-focused"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="custom-control custom-checkbox pmd-checkbox">
+                        <input class="custom-control-input" type="checkbox" value="" id="IsHalfDay" id="inverse_defaultCheck1">
+                        <label class="custom-control-label" for="inverse_defaultCheck1">
+                            Is it a Half Day?
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="button" class="btn btn-primary pmd-ripple-effect pmd-btn-raised" name="applyleave" onclick="AddUpdateLeave()" value="Apply Leave">Apply Leave</button>
+            <button type="button" class="btn btn-primary" id="btnEditLeave"  class="btn float-right AddEmployee_btn">Update</button>
+            <a href="/Employee/Index" class="btn btn-outline-secondary pmd-ripple-effect">Cancel</a>
+        </div>
+    </form>
+</div>
+
+<!-- Navbar start -->
+<div class="container-fluid fixed-top px-0">
+    <div class="container px-0">
+        <div class="topbar">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-8">
+                  
+                </div>
+                <div class="col-md-4">
+                   
+                </div>
+            </div>
+        </div>
+        <nav class="navbar navbar-light bg-light navbar-expand-xl">
+            <a href="index.html" class="navbar-brand ms-3">
+                <h1 class="text-primary display-5">ILeavePortal</h1>
+            </a>
+            @*  <button class="navbar-toggler py-2 px-3 me-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="fa fa-bars text-primary"></span>
+            </button> *@
+            @* <div class="collapse navbar-collapse bg-light" id="navbarCollapse">
+            <div class="navbar-nav ms-auto"> *@
+            <a href="/Employee/Index" class="nav-item nav-link active">Home</a>
+
+            @* <a href="/ApplyLeave/Index" class="nav-item nav-link">Apply Leave</a>*@       
+    </div>
+
+</div>
+
+
+<div class="carousel-item">
+    <img src="~/news-5.jpg" class="img-fluid" alt="Image">
+    <div class="carousel-caption">
+        <div class="p-3" style="max-width: 900px;">
+        </div> justo amet elitr clita ipsum elitr est.Lorem ipsum dolor sit amet, consectetur adipiscing elit consectetur adipiscing elit.</p>
+        <div class="position-relative mx-auto">
+            <input class="form-control border-0 bg-secondary w-100 py-3 ps-4 pe-5" type="text" placeholder="Enter your email">
+            <button type="button" class="btn-hover-bg btn btn-primary position-absolute top-0 end-0 py-2 mt-2 me-2">SignUp</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- Copyright Start -->
+<div class="container-fluid copyright py-4" style="margin-top : 150px">
+    <div class="container">
+        <div class="row g-4 align-items-center">
+          @*   <div class="col-md-4 text-center text-md-start mb-md-0">
+                <span class="text-body"><a href="#"><i class="fas fa-copyright text-light me-2"></i>ILeavePortal</a>, All right reserved.</span>
+            </div> *@
+            <div class="col-md-4 text-center">
+                <div class="d-flex align-items-center justify-content-center">
+                    <a href="#" class="btn-hover-color btn-square text-white me-2"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="btn-hover-color btn-square text-white me-2"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="btn-hover-color btn-square text-white me-2"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="btn-hover-color btn-square text-white me-2"><i class="fab fa-pinterest"></i></a>
+                    <a href="#" class="btn-hover-color btn-square text-white me-0"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="col-md-4 text-center text-md-end text-body">
+                <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
+                <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
+                <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
+                @*  Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a class="border-bottom" href="https://themewagon.com">ThemeWagon</a> *@
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Copyright End -->
+<!-- Back to Top -->
+<a href="#" class="btn btn-primary btn-primary-outline-0 btn-md-square back-to-top"><i class="fa fa-arrow-up"></i></a>
+
+</html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="~/lib/datatables/datatables.min.js"></script>
+<script src="~/lib/datatables/datatables.js"></script>
+<link href="~/lib/datatables/datatables.min.css" rel="stylesheet" />
+<link href="~/lib/datatables/datatables.css" rel="stylesheet" />
+<script src="~/js/applyleave.js"></script>
+<script src="~/js/admin.js"></script>
+
+
