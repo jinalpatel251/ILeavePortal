@@ -78,13 +78,13 @@ input:focus {
 
     .AddEmployee_btn:hover {
         color: black;
-        background-color: white;
+        background-color: white; 
     }
 
 .links {
     color: white;
 }
-
+                           
     .links a {
         margin-left: 4px;
     }

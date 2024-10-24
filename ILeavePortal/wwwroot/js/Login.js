@@ -9,8 +9,27 @@ function Add() {
         UserEmailId: $('#UserEmailId').val(),
         Password: $('#Password').val(),
     }
-    alert(loginObj);
+   
     console.log(loginObj);
+    if (!loginObj.UserEmailId || !loginObj.Password) {
+        alert("Please enter both Email ID and Password.");
+        return; // Stop execution if any field is empty
+    }
+
+    // Here, you could include client-side validation for the email format if needed
+    // Example:
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(loginObj.UserEmailId)) {
+        alert("Please enter a valid Email ID.");
+        return; // Stop execution if the email is invalid
+    }
+
+    const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d).+$/; // At least one letter and one number
+    if (!passwordPattern.test(loginObj.Password)) {
+        alert("Password must contain at least three letter and three number.");
+        return; // Stop execution if the password does not meet criteria
+    }
+
     $.ajax({
         url: "/Login/Add",
         data: { login: loginObj },
@@ -18,10 +37,16 @@ function Add() {
 
         dataType: "json",
         success: function (result) {
-            if (loginObj.UserEmailId === "admin@gmail.com") {
-                window.location.href = '/Login/Index';
+            if (result.success) {
+                if (loginObj.UserEmailId === "admin@gmail.com") {
+                    window.location.href = '/Login/Index';
+                } else {
+                    window.location.href = '/Employee/Index';
+                }
             } else {
-                window.location.href = '/Employee/Index';
+                alert(result.errors && result.errors.length > 0
+                    ? result.errors.join(", ")
+                    : "User not found in records.");
             }
             loadData();
         },

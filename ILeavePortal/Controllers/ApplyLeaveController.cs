@@ -23,7 +23,7 @@ namespace ILeavePortal.Controllers
                     var leave = new ApplyLeave
                     {
                         Id = Convert.ToInt32(leaveDetails.Rows[0]["Id"]),
-                        LeaveType = Convert.ToString(leaveDetails.Rows[0]["LeaveType"]),
+                        LeaveType = Convert.ToString(leaveDetails.Rows[0]["LeaveTypeSSS"]),
                         // Convert DateTime from the database to DateOnly
                         StartDate = DateOnly.FromDateTime(Convert.ToDateTime(leaveDetails.Rows[0]["StartDate"])),
                         EndDate = DateOnly.FromDateTime(Convert.ToDateTime(leaveDetails.Rows[0]["EndDate"])),

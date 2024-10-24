@@ -8,7 +8,7 @@ namespace ILeavePortal.Repository
 {
     public class Loginrepo
     {
-        string cs = "Data Source=DESKTOP-6CAGAKO\\SQLEXPRESS;Initial Catalog=ILeavePortal;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+        string cs = "Data Source=DESKTOP-6CAGAKO\\SQLEXPRESS;Initial Catalog=ILeavePortal;Persist Security Info=True;User ID=jinalp;Password=jinal12;Trust Server Certificate=True";
 
         private static string connectionString = ConnectionString.Get("Connection");
 
@@ -41,7 +41,7 @@ namespace ILeavePortal.Repository
 
         }
 
-        public int Add(Login login)
+        public int Add(Employee login)
         {
             int i = 0;
 

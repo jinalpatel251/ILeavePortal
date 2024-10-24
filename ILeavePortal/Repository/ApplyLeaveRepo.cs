@@ -10,7 +10,7 @@ namespace ILeavePortal.Repository
 {
     public class ApplyLeaveRepo
     {
-        string cs = "Data Source=DESKTOP-6CAGAKO\\SQLEXPRESS;Initial Catalog=ILeavePortal;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+        string cs = "Data Source=DESKTOP-6CAGAKO\\SQLEXPRESS;Initial Catalog=ILeavePortal;User ID=jinalp;Password=jinal12;Trust Server Certificate=True";
         private static string connectionString = ConnectionString.Get("Connection");
         public static DataTable GetApplyLeave()
         {

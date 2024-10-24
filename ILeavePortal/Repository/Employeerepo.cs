@@ -3,6 +3,7 @@ using ILeavePortal.Controllers;
 using ILeavePortal.Models;
 using ILeavePortal.Utility;
 using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using System.Data;
 using SqlConnection = Microsoft.Data.SqlClient.SqlConnection;
 
@@ -10,7 +11,7 @@ namespace ILeavePortal.Repository
 {
     public class Employeerepo
     {
-        string cs = "Data Source=DESKTOP-6CAGAKO\\SQLEXPRESS;Initial Catalog=ILeavePortal;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+        string cs = "Data Source=DESKTOP-6CAGAKO\\SQLEXPRESS;Initial Catalog=ILeavePortal;User ID=jinalp;Password=jinal12;Trust Server Certificate=True";
         private static string connectionString = ConnectionString.Get("Connection");
 
 
@@ -207,7 +208,33 @@ namespace ILeavePortal.Repository
             }
         }
 
-       
+        public bool CheckEmailExists(string email,string password)
+        {
+            try
+            {
+                string query = "SELECT COUNT(1) FROM Employee WHERE UserEmailId = @UserEmailId AND Password = @Password";
+
+                using (SqlConnection con = new SqlConnection(connectionString))
+                using (SqlCommand sqlCommand = new SqlCommand(query, con))
+                {
+                    sqlCommand.Parameters.AddWithValue("@UserEmailId", email);
+                    sqlCommand.Parameters.AddWithValue("@Password", password);
+                    con.Open();
+                    // Execute the command and check if any record exists
+                    int count = (int)sqlCommand.ExecuteScalar(); // ExecuteScalar returns the first column of the first row
+                    con.Close();
+
+                    return count > 0; // If count is greater than 0, the email exists
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the error (consider using a logging framework)
+                Console.WriteLine($"Error checking email existence: {ex.Message}");
+                return false; // Handle the exception gracefully
+            }
+        }
+
 
         //internal bool CancelEmployee(int id)
         //{

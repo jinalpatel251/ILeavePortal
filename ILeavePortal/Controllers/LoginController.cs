@@ -9,6 +9,7 @@ namespace ILeavePortal.Controllers
     public class LoginController : Controller
     {
         Loginrepo loginrepo = new Loginrepo();
+        Employeerepo employeerepo = new Employeerepo();
         public IActionResult Index()
         {
             return View();
@@ -19,7 +20,7 @@ namespace ILeavePortal.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(Login login)
+        public IActionResult Add(Employee login)
         {
             int result = loginrepo.Add(login);
 
@@ -35,9 +36,14 @@ namespace ILeavePortal.Controllers
                 {
                     return Json(new { success = true, RedirectUrl = "/Login/Index" });
                 }
-                else
+                if (employeerepo.CheckEmailExists(login.UserEmailId,login.Password))
                 {
                     return Json(new { success = true, RedirectUrl = "/Employee/Index" });
+                }
+                
+                else
+                {
+                    return Json(new { success = false, errors = new List<string> { "User not found in records." } });
                 }
             }
 
@@ -85,7 +91,7 @@ namespace ILeavePortal.Controllers
         }
 
 
-      
+
     }
 }
 
